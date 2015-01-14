@@ -1,5 +1,5 @@
-from mapper.clusterfunctions.vietorisRipsClustering import VietorisRipsClustering
-from mapper.naiveMapper import mapper
+from mapper.clusterfunctions import VietorisRipsClustering
+from mapper import mapper
 from mapper.referenceMap import create_functional_cover, coordinate_projection
 import matplotlib.pyplot as plt
 import math
