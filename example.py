@@ -3,10 +3,23 @@ from mapper import mapper
 from mapper.referenceMap import create_functional_cover, coordinate_projection
 import matplotlib.pyplot as plt
 import math
+import json
 
 def plot_data(data):
     plt.scatter(map(lambda x: x[0], data), map(lambda x: x[1], data))
     plt.show()
+
+def write_graph(graph):
+	d3Graph = {
+	    "nodes": [],
+	    "links": []
+	}
+	filename = "graph"
+
+	with open(filename + ".json","w") as output_file:
+	    output_file.write(json.dumps(d3Graph))
+
+
 
 # Example data set
 n = 40
