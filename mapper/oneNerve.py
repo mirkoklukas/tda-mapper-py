@@ -8,7 +8,7 @@ from combinatoricalHelper import extract_unordered_pairs
 
 def hasNonEmptyIntersection (A, B):
     """Given two iterables it checks wether they have a common element."""
-    return len(set(A)&set(A)) > 0
+    return len(set(A)&set(B)) > 0
 
 # ------------------------------------------------------
 

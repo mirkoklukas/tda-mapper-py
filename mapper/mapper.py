@@ -23,9 +23,9 @@ def mapper(clusterFct, referenceFct, funcCover):
     if not isinstance(clusterFct, AbstractClusterFunction) or not isinstance(referenceFct, ReferenceMap):
         raise TypeError("Please take look at the function signature....")
         
-    clusterCover = clusterFct.push_forward(referenceFct.pull_back(funcCover))
-    oneNerve = compute_one_nerve(clusterCover)
+    indexedClusterCover = clusterFct.push_forward(referenceFct.pull_back(funcCover))
+    oneNerve = compute_one_nerve(indexedClusterCover)
 
-    return (clusterCover, oneNerve)
+    return (indexedClusterCover, oneNerve)
 
 
