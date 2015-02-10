@@ -18,7 +18,9 @@ def mapper(clusterFct, referenceFct, funcCover):
         funcCover: A dict of boolean functions (characteristic functions), 
             that are defined on the target space of the given filter.
     Returns:
-        A simplicial complex.
+        A simplicial complex given in terms of a pair (U, S), where
+            U is the covering whose nerve is constructed, and 
+            S is the set/list of 1-simplices
     """
     if not isinstance(clusterFct, AbstractClusterFunction) or not isinstance(referenceFct, ReferenceMap):
         raise TypeError("Please take look at the function signature....")
@@ -26,6 +28,6 @@ def mapper(clusterFct, referenceFct, funcCover):
     indexedClusterCover = clusterFct.push_forward(referenceFct.pull_back(funcCover))
     oneNerve = compute_one_nerve(indexedClusterCover)
 
-    return (indexedClusterCover, oneNerve)
+    return oneNerve
 
 
