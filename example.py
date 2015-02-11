@@ -1,6 +1,6 @@
-from mapper.clusterfunctions import VietorisRipsClustering
-from mapper import mapper
-from mapper.referenceMap import create_functional_cover, coordinate_projection
+from tdamapper.clusterfunctions import VietorisRipsClustering
+from tdamapper import mapper
+from tdamapper.referenceMap import create_functional_cover, coordinate_projection
 import json
 
 # ------------------------------------------------------
@@ -35,11 +35,11 @@ data = [ tuple(p) for p in data ]
 
 # Gather the mapper input
 VR = VietorisRipsClustering(epsilon = 0.6) 
-yAxis = coordinate_projection(axis=2, domain=data)
+zAxis = coordinate_projection(axis=2, domain=data)
 funcCover = create_functional_cover(endpoints=range(-12,12), overlap=0.5)
 
 # Run the alogrithm
-S = mapper(VR, yAxis, funcCover)
+S = mapper(VR, zAxis, funcCover)
 
 # Print the result
 print 'Mapper result:'

@@ -9,7 +9,18 @@ def extendIndex(i, Us):
 
 class AbstractClusterFunction(object):
     def __call__(self, data):
-        """Given a list of data points it returns a list of clusters, 
+        """
+        Implements the default behaviour for clustering the empty list, and  
+        passes along the data to the cluster function.
+        """
+        if len(data) == 0:
+            return []
+        else:
+            return self.cluster(data)
+
+    def cluster(self, data):
+        """
+        Given a list of data points it returns a list of clusters, 
         where a cluster is list of data points.
         
         Args:
@@ -20,7 +31,8 @@ class AbstractClusterFunction(object):
         raise NotImplementedError("Should have implemented this")
 
     def push_forward(self, cover):
-        """Takes a cover and applies the cluster function to each element, 
+        """
+        Takes a cover and applies the cluster function to each element, 
         and collects the clusters to form a new cover.
 
         Args:
@@ -29,7 +41,7 @@ class AbstractClusterFunction(object):
             Another cover, where the new sets are clusters.
         """
         listOfIndexedClusters = [ extendIndex(i,self(U)) for i,U in cover.iteritems()]
-        return dict(reduce(operator.add , listOfIndexedClusters))
+        return dict(reduce(operator.add , listOfIndexedClusters, []))
 
 
 

@@ -46,7 +46,7 @@ class VietorisRipsClustering(AbstractClusterFunction):
         self.epsilon = epsilon
         self.distance = distance
 
-    def __call__(self, data):
+    def cluster(self, data):
         G = dict([(x, []) for x in data])
         pairs = extract_unordered_pairs(data)
 
