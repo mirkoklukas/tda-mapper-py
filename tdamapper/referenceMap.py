@@ -24,12 +24,12 @@ class ReferenceMap(dict, object):
         """
         Given a data point x it returns the associated value.
         """
-    	if self.has_key(x):
-    		return self[x]
-    	elif self.func is not None:
-    		y = self.func(x)
-    		self[x] = y
-    		return y
+        if self.has_key(x):
+            return self[x]
+        elif self.func is not None:
+            y = self.func(x)
+            self[x] = y
+            return y
         else:
             msg = "There is no function expression defined " \
                   "nor does an entry with that key exist..."
