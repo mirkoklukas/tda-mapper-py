@@ -1,1 +1,1 @@
-from tdamapper.vietorisRipsClustering import VietorisRipsClustering
+from vietorisRipsClustering import VietorisRipsClustering
