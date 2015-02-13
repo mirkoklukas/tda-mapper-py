@@ -2,7 +2,7 @@
 # Computing the 1-nerve of a cover.
 # ------------------------------------------------------
 
-from combinatoricalHelper import extract_unordered_pairs
+from tdamapper.combinatoricalHelper import extract_unordered_pairs
 
 # ------------------------------------------------------
 
