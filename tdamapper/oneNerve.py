@@ -18,11 +18,13 @@ def compute_one_nerve(covering, simplexCondition = hasNonEmptyIntersection):
 
     Args:
         covering: A dict of iterables.
-        simplexCondition(A, B): A boolean function that returns true iff a 1-simplex between the two 
-            iterables A,B should be added.
+        simplexCondition(A, B): A boolean function that returns true iff 
+            a 1-simplex between the two iterables A,B should be added.
     Returns:
-        A tuple (C,S), where C is the given covering, and S is a list of pairs (2-tuples) of indices/keys representing the 1-simplex connecting the indices/keys.
-        The indices correspond to the entry in the covering at the respective position.
+        A tuple (C,S), where C is the given covering, and S is 
+        a list of 2-tuples (i,j), with i<j, of indices/keys representing 
+        the 1-simplex connecting the indices/keys. The indices correspond 
+        to the entry in the covering at the respective position.
     """
     indices = covering.keys()
     pairs = extract_unordered_pairs(indices)

@@ -10,7 +10,7 @@ def write_d3graph(cover, simplicies, data, filename ):
     lookup = dict(zip(keys, range(len(keys))))
     d3Graph = { 
         "count": len(data),
-        "nodes": map(lambda key: {"name": key, "group": key[0], "count": len(cover[key]), "index": key} ,keys),
+        "nodes": map(lambda key: {"name": key, "group": key[0], "size": len(cover[key]), "index": key} ,keys),
         "links": map(lambda (a,b): { "source": lookup[a], "target": lookup[b], "value": 1}, simplicies)
     }
 

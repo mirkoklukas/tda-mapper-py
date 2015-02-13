@@ -14,10 +14,11 @@ class ReferenceMap(dict, object):
         """
         if len(values) > 0:
             dict.__init__(self, values)
-            self.domain = values.keys()
+            self.domain = self.keys()
         else:
-            self.func = functionExpression
             self.domain = domain
+
+        self.func = functionExpression
 
     def __call__(self, x):
         """
@@ -41,12 +42,12 @@ class ReferenceMap(dict, object):
     def pre_image(self, condition):
         return [ x for x in self.domain if condition(self(x))]
 
-    def pull_back(self, conditionDict):
+    def pull_back(self, functionalCover):
         """
         Given a dictionary whose values are characteristic functions 
         it returns a covering of the domain.
         """
-        entries = [ (i, self.pre_image(condition)) for i,condition in conditionDict.iteritems()]
+        entries = [ (i, self.pre_image(condition)) for i,condition in functionalCover.iteritems()]
         return dict(entries)
 
 # ------------------------------------------------------
