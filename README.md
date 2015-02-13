@@ -1,4 +1,4 @@
-# mapper-py
+# tda-mapper-py
 
 [![Build Status](https://travis-ci.org/mirkoklukas/mapper-py.svg?branch=master)](https://travis-ci.org/mirkoklukas/mapper-py)
 
