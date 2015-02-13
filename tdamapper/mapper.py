@@ -3,9 +3,9 @@
 # (I wrote a little blog post about it at http://mapsfunctionsandarrows.blogspot.de)
 # ------------------------------------------------------
 
-from oneNerve import compute_one_nerve
-from abstractClusterFunction import AbstractClusterFunction
-from referenceMap import ReferenceMap
+from tdamapper.oneNerve import compute_one_nerve
+from tdamapper.abstractClusterFunction import AbstractClusterFunction
+from tdamapper.referenceMap import ReferenceMap
 
 
 def mapper(clusterFct, referenceFct, funcCover):
