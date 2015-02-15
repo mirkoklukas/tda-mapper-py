@@ -1,4 +1,4 @@
-from tdamapper.referenceMap import *
+from tdamapper.referenceMap import ReferenceMap
 import pytest
 
 
@@ -43,6 +43,7 @@ def test_reference_map_methods():
         "higher": lambda x: x > 10
         }
 
+    assert refmap.pre_image(lambda x: False) == []
     assert refmap.pre_image(lambda x: 0<= x and x < 10) == range(20)
     assert refmap.pull_back(funcCover) == { 
         "lower": range(20),

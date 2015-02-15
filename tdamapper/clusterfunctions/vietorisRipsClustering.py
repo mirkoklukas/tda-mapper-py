@@ -1,7 +1,7 @@
 # ------------------------------------------------------
 # A super simple cluster algorithm. 
 # ------------------------------------------------------
-from ..abstractClusterFunction import AbstractClusterFunction
+from abstractClusterFunction import AbstractClusterFunction
 from ..combinatoricalHelper import extract_unordered_pairs
 import math
 

@@ -12,6 +12,32 @@ def hasNonEmptyIntersection (A, B):
 
 # ------------------------------------------------------
 
+class OneSimplex(tuple, object):
+    def cast_to_d3js(self):
+        cover = self[0]
+        simplicies = self[1]
+        keys = cover.keys()
+        lookup = dict(zip(keys, range(len(keys))))
+        d3jsGraph = { 
+            "nodes": [
+                {
+                    "name": key, 
+                    "group": key[0], 
+                    "size": len(cover[key])
+                } 
+                for key in keys],
+            "links": [
+                { 
+                    "source": lookup[i], 
+                    "target": lookup[j],
+                    "size": len(set(cover[i])&set(cover[j]))
+                }
+                for (i, j) in simplicies]
+        }
+
+        return d3jsGraph
+
+
 def compute_one_nerve(covering, simplexCondition = hasNonEmptyIntersection):
     """
     Given a covering it computes the associated 1-nerve.
@@ -30,33 +56,9 @@ def compute_one_nerve(covering, simplexCondition = hasNonEmptyIntersection):
     pairs = extract_unordered_pairs(indices)
     simplices = [(i,j) for (i,j) in pairs if simplexCondition(covering[i],covering[j]) == True ] 
 
-    return (covering, simplices)
+    return OneSimplex((covering, simplices))
 
 # ------------------------------------------------------
-
-def cast_to_d3jsGraph(oneNerve):
-    cover = oneNerve[0]
-    simplicies = oneNerve[1]
-    keys = cover.keys()
-    lookup = dict(zip(keys, range(len(keys))))
-    d3jsGraph = { 
-        "nodes": [
-            {
-                "name": key, 
-                "group": key[0], 
-                "count": len(cover[key]), 
-                "index": key
-            } 
-            for key in keys],
-        "links": [
-            { 
-                "source": lookup[i], 
-                "target": lookup[j]
-            }
-            for (i, j) in simplicies]
-    }
-
-    return d3jsGraph
 
 
 

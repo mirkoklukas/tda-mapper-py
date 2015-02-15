@@ -1,5 +1,6 @@
-from tdamapper.abstractClusterFunction import AbstractClusterFunction
-from tdamapper.clusterfunctions.vietorisRipsClustering import *
+from tdamapper.clusterfunctions.abstractClusterFunction import AbstractClusterFunction
+from tdamapper.clusterfunctions.vietorisRipsClustering import euclidianDistance, VietorisRipsClustering, getConnectedComponent, getAllConnectedComponents
+import math
 
 # ------------------------------------------------------
 

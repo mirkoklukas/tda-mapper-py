@@ -4,7 +4,7 @@
 # ------------------------------------------------------
 
 from tdamapper.oneNerve import compute_one_nerve
-from tdamapper.abstractClusterFunction import AbstractClusterFunction
+from tdamapper.clusterfunctions.abstractClusterFunction import AbstractClusterFunction
 from tdamapper.referenceMap import ReferenceMap
 
 

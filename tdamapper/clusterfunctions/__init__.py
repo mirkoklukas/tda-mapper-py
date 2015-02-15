@@ -1,1 +1,2 @@
 from tdamapper.clusterfunctions.vietorisRipsClustering import VietorisRipsClustering
+from tdamapper.clusterfunctions.abstractClusterFunction import AbstractClusterFunction

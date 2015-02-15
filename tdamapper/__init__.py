@@ -1,2 +1,2 @@
 from tdamapper.mapper import mapper
-from tdamapper.abstractClusterFunction import AbstractClusterFunction
+from tdamapper.clusterfunctions.abstractClusterFunction import AbstractClusterFunction

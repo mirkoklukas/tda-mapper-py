@@ -80,9 +80,9 @@ def create_intervals(endpoints, overlap):
     Creates a list of overlapping intervals, where the endpoints are 
     chosen near the entries in a list of values.
     """
+    endpoints = sorted(endpoints)
     delta = overlap/2
     intervals = []
-    endpoints = sorted(endpoints)
     for i in range(len(endpoints) - 1):
         intervals.append([endpoints[i] - delta, endpoints[i+1] + delta])
 
