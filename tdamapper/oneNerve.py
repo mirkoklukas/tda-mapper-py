@@ -13,6 +13,17 @@ def hasNonEmptyIntersection (A, B):
 # ------------------------------------------------------
 
 class OneSimplex(tuple, object):
+    def __init__(self, *args):
+        super(tuple, self).__init__(*args)
+        self.node = self[0]
+        self.links = self[1]
+
+    def nodes(self):
+        return self(0)
+
+    def links(self):
+        return self(1)
+
     def cast_to_d3js(self):
         cover = self[0]
         simplicies = self[1]
@@ -30,7 +41,8 @@ class OneSimplex(tuple, object):
                 { 
                     "source": lookup[i], 
                     "target": lookup[j],
-                    "size": len(set(cover[i])&set(cover[j]))
+                    "size": len(set(cover[i])&set(cover[j])),
+                    "value": 1
                 }
                 for (i, j) in simplicies]
         }

@@ -44,12 +44,16 @@ S = mapper(VR, zAxis, funcCover)
 # Print the result
 print 'Mapper result:'
 print 'Cover by clusters:'
-print S[0]
+print S.nodes
 print '1-simplicies:'
-print S[1]
+print S.links
 
 # Write a json object that can be plotted with d3js.
 # (open the index.html file in a browser to view a (very basic) visualization of the graph)
-write_d3graph(S[0],S[1], data, 'graph')
+filename = "graph"
+with open(filename + ".json","w") as output_file:
+    output_file.write('var graph =')
+    output_file.write(json.dumps(S.cast_to_d3js()))
+
 
 
