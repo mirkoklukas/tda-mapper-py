@@ -31,7 +31,43 @@
         <h1>
 <a id="tda-mapper-py" class="anchor" href="#tda-mapper-py" aria-hidden="true"><span class="octicon octicon-link"></span></a>TDA-Mapper-py</h1>
 
-<p>A straightforward implementation of the mapper construction by Carlsson--Memoli--Singh. I wrote a little blog post about it at <a href="http://mapsfunctionsandarrows.blogspot.de">http://mapsfunctionsandarrows.blogspot.de</a></p>
+<p><a href="https://travis-ci.org/mirkoklukas/tda-mapper-py"><img src="https://travis-ci.org/mirkoklukas/tda-mapper-py.svg?branch=master" alt="Build Status"></a></p>
+
+<p>A straightforward implementation of the mapper construction by Carlsson-Memoli-Singh. I wrote a little blog post about it at <a href="http://mapsfunctionsandarrows.blogspot.de">http://mapsfunctionsandarrows.blogspot.de</a></p>
+
+<h2>
+<a id="example" class="anchor" href="#example" aria-hidden="true"><span class="octicon octicon-link"></span></a>Example</h2>
+
+<div class="highlight highlight-python"><pre><span class="pl-k">from</span> tdamapper.clusterfunctions <span class="pl-k">import</span> VietorisRipsClustering
+<span class="pl-k">from</span> tdamapper <span class="pl-k">import</span> mapper
+<span class="pl-k">from</span> tdamapper.referenceMap <span class="pl-k">import</span> create_functional_cover, coordinate_projection
+<span class="pl-k">import</span> json
+
+<span class="pl-c"># Example data set</span>
+<span class="pl-k">with</span> <span class="pl-s3">open</span>(<span class="pl-s1"><span class="pl-pds">"</span>./example/dataset.json<span class="pl-pds">"</span></span>) <span class="pl-k">as</span> f:
+    data <span class="pl-k">=</span> json.load(f);
+    data <span class="pl-k">=</span> [ <span class="pl-s3">tuple</span>(p) <span class="pl-k">for</span> p <span class="pl-k">in</span> data ]
+
+<span class="pl-c"># Gather the mapper input</span>
+VR <span class="pl-k">=</span> VietorisRipsClustering(<span class="pl-vpf">epsilon</span> <span class="pl-k">=</span> <span class="pl-c1">0.6</span>) 
+zAxis <span class="pl-k">=</span> coordinate_projection(<span class="pl-vpf">axis</span><span class="pl-k">=</span><span class="pl-c1">2</span>, <span class="pl-vpf">domain</span><span class="pl-k">=</span>data)
+funcCover <span class="pl-k">=</span> create_functional_cover(<span class="pl-vpf">endpoints</span><span class="pl-k">=</span><span class="pl-s3">range</span>(<span class="pl-k">-</span><span class="pl-c1">12</span>,<span class="pl-c1">12</span>), <span class="pl-vpf">overlap</span><span class="pl-k">=</span><span class="pl-c1">0.5</span>)
+
+<span class="pl-c"># Run the alogrithm</span>
+result <span class="pl-k">=</span> mapper(VR, zAxis, funcCover)
+</pre></div>
+
+<p>Below you see a visualization of the mapper result. The graph is colored by the values of <code>zAxis</code>, the projection on the z-axis. The size of the nodes
+reflects the size of the associated clusters.</p>
+
+<p>The take away should be that there are actually two separate branches growing out of a bigger cluster.
+You shouldn't focus too much on the fact that the two branches cross each other. Although it reflects the reality of the situation pretty well, it is rather a bi-product of the fact that the data set lives in so few dimensions.  </p>
+
+<p><img src="https://raw.githubusercontent.com/mirkoklukas/tda-mapper-py/master/example/result.png" alt="The result of the mapper construction" title="The result of the mapper construction"></p>
+
+<p>And indeed (what a terrible example it would have been if that was not the case) looking at a 3d plot of the original dataset we see that this reflects the shape pretty well. </p>
+
+<p><img src="https://raw.githubusercontent.com/mirkoklukas/tda-mapper-py/master/example/dataset.png" alt="An example data set" title="An example data set"></p>
       </section>
       <footer>
         <p>This project is maintained by <a href="https://github.com/mirkoklukas">mirkoklukas</a></p>
