@@ -32,7 +32,7 @@ Below you see a visualization of the mapper result. The graph is colored by the 
 reflects the size of the associated clusters.
 
 The take away should be that there are actually two separate branches growing out of a bigger cluster.
-You shouldn't focus to much on the fact that the two branches cross each other. Although it reflects the reality of the situation pretty well, it is rather a bi-product of the fact that the data set lives in so few dimensions.  
+You shouldn't focus too much on the fact that the two branches cross each other. Although it reflects the reality of the situation pretty well, it is rather a bi-product of the fact that the data set lives in so few dimensions.  
 
 ![The result of the mapper construction](https://github.com/mirkoklukas/tda-mapper-py/blob/master/example/result.png "The result of the mapper construction")
 
