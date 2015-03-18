@@ -12,7 +12,7 @@ def hasNonEmptyIntersection (A, B):
 
 # ------------------------------------------------------
 
-class OneSimplex(tuple, object):
+class Graph(tuple, object):
     def __init__(self, *args):
         super(tuple, self).__init__(*args)
         self.node = self[0]
@@ -68,7 +68,7 @@ def compute_one_nerve(covering, simplexCondition = hasNonEmptyIntersection):
     pairs = extract_unordered_pairs(indices)
     simplices = [(i,j) for (i,j) in pairs if simplexCondition(covering[i],covering[j]) == True ] 
 
-    return OneSimplex((covering, simplices))
+    return Graph((covering, simplices))
 
 # ------------------------------------------------------
 
